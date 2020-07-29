@@ -5,6 +5,3 @@ CREATE USER 'testuser2'@'localhost' IDENTIFIED BY 'pass2';
 
 GRANT SELECT ON *.* TO testuser1@localhost WITH GRANT OPTION;
 GRANT SELECT,INSERT,UPDATE ON *.* TO testuser2@localhost WITH GRANT OPTION;
-
-GRANT SELECT ON *.* TO testuser1@localhost WITH GRANT OPTION;
-GRANT SELECT,INSERT,UPDATE ON *.* TO testuser2@localhost WITH GRANT OPTION;
