@@ -1,5 +1,7 @@
 ---- ↓ sample query ----
 
+use `demo_db1`;
+
 ---- drop ----
 DROP TABLE IF EXISTS `test_table`;
 
