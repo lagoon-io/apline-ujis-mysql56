@@ -1,13 +1,8 @@
-FROM apline:3.12.0
+FROM mysql:5.6
 
-WORKDIR /app
-VOLUME /app
-
-RUN apk add --update mysql mysql-client \
-  && rm -rf /var/cache/apk/*
-
-COPY ./startup /startup
-COPY ./conf/mysql/my.cnf /etc/mysql/my.cnf
-
-EXPOSE 3306
-CMD ["/startup/startup.sh"]
+RUN apt-get update && \
+  apt-get install -y locales vim && \
+  rm -rf /var/lib/apt/lists/* && \
+  echo "ja_JP.EUC-JP EUC-JP" > /etc/locale.gen && \
+  locale-gen ja_JP.ujis
+ENV LC_ALL ja_JP.ujis

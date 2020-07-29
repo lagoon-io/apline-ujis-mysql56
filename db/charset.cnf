@@ -1,0 +1,6 @@
+[mysqld]
+character-set-server=ujis
+collation-server=ujis_japanese_ci
+character_set_filesystem=ujis
+[client]
+default-character-set=ujis

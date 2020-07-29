@@ -1,18 +1,22 @@
 version: "3"
+
 services:
-  mysql:
+  # MySQL
+  mysql56:
+    container_name: mysql56ujis
     build:
       dockerfile: Dockerfile
       context: .
-    # image: ${IMAGE_NAME}:${ALPINE_VERSION}
-    # container_name: ${CONTAINER_NAME}
-    # environment:
-    #   - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    #   - MYSQL_USER=${MYSQL_USER}
-    #   - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    #   - MYSQL_DATABASE=${MYSQL_DATABASE}
-    volumes:
-      - .:/app
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sandbox
+      #      MYSQL_USER: sandbox_user
+      #      MYSQL_PASSWORD: passpass
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      TZ: "Asia/Tokyo"
     ports:
-      # - "${HOST_ADDRESS}:3306"
       - "3306:3306"
+    volumes:
+      - "./db/data:/var/lib/mysql"
+      - "./db/charset.cnf:/etc/mysql/conf.d/charset.cnf"
+      - "./db/sql:/docker-entrypoint-initdb.d"
